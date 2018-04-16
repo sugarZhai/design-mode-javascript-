@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数模式</title>
+</head>
+<body>
+<!--构造函数用于创建特定类型的对象——不仅声明了使用过的对象，-->
+<!--构造函数还可以接受参数以便第一次创建对象的时候设置对象的成员值。-->
+<!--你可以自定义自己的构造函数，然后在里面声明自定义类型对象的属性或方法。-->
+
+<!--在JavaScript里，构造函数通常是认为用来实现实例的，JavaScript没有类的概念，-->
+<!--但是有特殊的构造函数。通过new关键字来调用自定义的构造函数，在构造函数内部，-->
+<!--this关键字引用的是新创建的对象。-->
+<!--模式作用：-->
+
+<!--1.用于创建特定类型的对象-->
+
+<!--2.第一次声明的时候给对象赋值-->
+
+<!--3.自己声明构造函数，赋予属性和方法-->
+
+<!--注意事项：-->
+
+<!--1.声明函数的时候处理业务逻辑-->
+
+<!--2.区分和单例的区别，配合单例实现初始化-->
+
+<!--3.构造函数大写字母开头-->
+<script>
+    //1.用于创建特定类型的对象
+    //2.这样的函数名会被人笑话
+    //3.js开发的时候写单引号
+    //4.js里构造函数比较特殊的地方 new
+    //5.其他的语言里 比如PHP 里人家实现 有一个关键字 A class
+    //6.zaomen就是构造函数 他又充当了类的概念
+    var AA={
+        zaomen:function(huawen){
+            if(!(this instanceof AA.zaomen)){
+                console.log(123)
+                return new AA.zaomen(huawen);
+            };
+            var _huawen="普通";
+            if(huawen){
+                _huawen=huawen;
+            }
+            this.suo="普通";
+            this.huawen=_huawen;
+            this.create=function(){
+                return "【锁头】"+this.suo + "【花纹】"+this.huawen;
+            }
+        }
+    }
+    var BB={
+        zaomen:function(huawen){
+            if(!(this instanceof BB.zaomen)){
+                console.log(123)
+                return new BB.zaomen(huawen);
+            };
+            var _huawen="普通";
+            if(huawen){
+                _huawen=huawen;
+            }
+            this.suo="普通";
+            this.huawen=_huawen;
+            this.create=function(){
+                return "【锁头】"+this.suo + "【花纹】"+this.huawen;
+            }
+        }
+    }
+    var xiaozhang= new AA.zaomen();
+    alert("xiaozhang"+xiaozhang.create());
+    var xiaoli= new BB.zaomen("绚丽绚丽");
+    alert("xiaoli"+xiaoli.create())
+</script>
+<script>
+    function Car(model,year,miles){
+        if(!(this instanceof Car)){
+            return new Car(model,year,miles);
+        }
+        this.model = model;
+        this.year = year;
+        this.miles = miles;
+        this.output = function(){
+            return this.model + "走了" + this.miles + "公里";
+        }
+    }
+
+    var tom = new Car("大叔",2009,20000);
+    var dudu = Car("Dudu",2010,5000);
+
+    console.log(typeof tom);
+    console.log(tom.output());
+    console.log(typeof dudu);
+    console.log(dudu.output());
+
+</script>
+</body>
+</html>

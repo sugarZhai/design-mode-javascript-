@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型模式</title>
+</head>
+<body>
+<script>
+    var myobj={
+        str:"mystring",
+        num:1,
+        myarr:[30,{arrgo:"I am arr"}],
+        obj:{
+            innerobj:{
+                test:25
+            },
+            innerstr:"myobjInnerstr"
+        }
+    };
+    function clone(obj){
+        var ret,k,b;
+        if((b=obj instanceof Array)||obj instanceof Object){
+            console.log('深拷贝');
+            ret=b?[]:{};
+            for(k in obj){
+                if((obj[k] instanceof Array)||(obj[k] instanceof Object)){
+                    ret[k]=clone(obj[k]);
+                }else{
+                    ret[k]=obj[k];
+                }
+            }
+
+        }
+//        浅拷贝var ret={},k;
+//        for(k in obj){
+//            ret[k]=obj[k];
+//        };
+        return ret;
+    }
+    //浅拷贝
+    var result=clone(myobj);
+    result.obj.innerstr="outter";
+    console.log(result);
+    console.log(myobj);
+</script>
+</body>
+</html>

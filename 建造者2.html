@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test"></div>
+<script>
+    function getBeerById(id,callback){
+        //使用ID来请求数据,然后返回数据;
+        asyncRequest('GET','beer.uri?id='+ id,function(resp){
+            //callback调用response
+            callback(rep.responseText);
+        });
+    }
+    var el=document.querySelector('#test');
+    el.addEventListener('click',getBeerByIdBridge,false);
+
+    function getBeerByIdBridge(e){
+        getBeerById(this.id,function(beer){
+            console.log('Requested Beer:'+beer);
+        })
+    }
+</script>
+</body>
+</html>

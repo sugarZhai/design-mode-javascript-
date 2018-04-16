@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>观察者</title>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    ~(function(){
+        var o = $({});
+        $.jianting=function(){
+            o.on.apply(o,arguments);
+        };
+        $.fabu=function(){
+            o.trigger.apply(o,arguments);
+        };
+        $.qingchu=function(){
+            o.off.apply(o,arguments);
+        }
+    })();
+    $.jianting('/test/ls',function(e,a,b,c){
+        alert(a+'||'+b+'||'+c);
+    });
+    $.jianting('/test/ls',function(e,a,b,c){
+        alert("ok");
+    });
+    $.fabu('/test/ls',[1,2,3]);
+</script>
+</body>
+</html>

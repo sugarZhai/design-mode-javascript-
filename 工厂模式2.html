@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var productManager={};
+    productManager.createProductA=function(){
+        alert('ProductA');
+    }
+    productManager.createProductB=function(){
+        alert('ProductB');
+    }
+    productManager.factory=function(typeType){
+        alert('factory')
+        return new productManager[typeType];
+    }
+    productManager.factory("factory");
+</script>
+</body>
+</html>

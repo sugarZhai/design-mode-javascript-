@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板方法</title>
+</head>
+<body>
+<script>
+//    function liucheng(){}
+//    liucheng.prototype.start=function(){
+//        confirm('您是否进入游戏？')
+//    };
+//    liucheng.prototype.loading=function(){
+//        console.log('游戏加载中.....？')
+//    };
+//    liucheng.prototype.out=function(){
+//        confirm('您是否离开游戏？')
+//    };
+//    function xiaojigege(){}
+//    xiaojigege.prototype= new liucheng();
+//    xiaojigege.prototype.start();
+    /*造人的模板*/
+    function shangdi(){}
+    shangdi.prototype.zanren_yanjing=function(){
+        console.log('眼镜')
+    };
+    shangdi.prototype.zanren_bizi=function(){
+        console.log('鼻子')
+    };
+    shangdi.prototype.zanren_zuiba=function(){
+        console.log('嘴巴')
+    };
+    shangdi.prototype.aihao=function(){
+        throw new Error('我只是钩子，需要自己去探索')
+    };
+    /*小明*/
+    function xiaoming(){
+        console.log('小明是上帝的子类');
+        shangdi.call(this);
+    }
+    xiaoming.prototype= new shangdi();
+    xiaoming.prototype.aihao=function(){
+        console.log('小明爱讲笑话');
+    }
+</script>
+</body>
+</html>

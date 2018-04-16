@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单型原型模式</title>
+</head>
+<body>
+<script>
+    var myobj={
+        str:"mystring",
+        num:1,
+        myarr:[30,{arrgo:"I am arr"}],
+        obj:{
+            innerobj:{
+                test:25
+            },
+            innerstr:"myobjInnerstr"
+        }
+    };
+    var m=Object.create(myobj);
+    console.log(m)
+</script>
+</body>
+</html>

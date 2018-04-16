@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数</title>
+</head>
+<body>
+<script>
+    function Car(model,year,miles){
+        if(!(this instanceof Car)){
+            return new Car(model,year,miles);
+        }
+        this.model=model;
+        this.year=year;
+        this.miles=miles;
+        this.output=function(){
+            return this.model +"走了"+this.miles+"公里";
+        }
+    }
+    var tom=new Car("大叔",2010,3000);
+    var dudu=Car("Dudu",2010,5000);
+    console.log(typeof tom);
+    console.log(tom.output());
+    console.log(typeof dudu);
+    console.log(dudu.output());
+</script>
+</body>
+</html>

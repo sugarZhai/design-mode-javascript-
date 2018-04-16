@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<script>-->
+    <!--function Universe(){-->
+        <!--//判断是否存在实例-->
+        <!--if(typeof Universe.instance==='object'){-->
+            <!--return Universe.instance;-->
+        <!--}-->
+        <!--//其他内容-->
+        <!--this.start_time =0;-->
+        <!--this.bang="Big";-->
+        <!--//缓存-->
+        <!--Universe.instance=this;-->
+        <!--//隐式返回this-->
+    <!--}-->
+    <!--//测试-->
+    <!--var uni=new Universe();-->
+    <!--var uni2=new Universe();-->
+    <!--console.log(uni===uni2);-->
+<!--</script>-->
+<!--<script>-->
+    <!--function Universe(){-->
+        <!--//缓存的实例-->
+        <!--var instance=this;-->
+        <!--//其他内容-->
+        <!--this.start_time=0;-->
+        <!--this.bang="Big";-->
+        <!--//重写构造函数-->
+        <!--Universe=function(){-->
+            <!--return instance;-->
+        <!--};-->
+    <!--}-->
+    <!--//测试-->
+    <!--var uni=new Universe();-->
+    <!--var uni2=new Universe();-->
+    <!--uni.bang="123";-->
+    <!--console.log(uni===uni2)-->
+    <!--console.log(uni2.bang)-->
+<!--</script>-->
+<script>
+    var Universe;
+
+    (function () {
+
+        var instance;
+
+        Universe = function Universe() {
+
+            if (instance) {
+                return instance;
+            }
+
+            instance = this;
+
+            // 其它内容
+            this.start_time = 0;
+            this.bang = "Big";
+        };
+    } ());
+
+    //测试代码
+    var a = new Universe();
+    var b = new Universe();
+    alert(a === b); // true
+    a.bang = "123";
+    alert(b.bang); // 123
+</script>
+</body>
+</html>

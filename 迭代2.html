@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>迭代器2</title>
+</head>
+<body>
+<script>
+    var agg=(function(){
+        var index=0,
+            data=[1,2,3,4,5],
+            length=data.length;
+        return {
+            next:function(){
+                var element;
+                if(!this.hasNext()){
+                    return null;
+                }
+                element=data[index];
+                index=index+2;
+                return element;
+            },
+            hasNext:function(){
+                return index<length;
+            },
+            rewind:function(){
+                index=0;
+            },
+            current:function(){
+                return data[index];
+            }
+        }
+    }());
+    //迭代的结果是135
+    while(agg.hasNext()){
+        console.log(agg.next());
+    }
+    //重置
+    agg.rewind();
+    console.log(agg.current());
+</script>
+</body>
+</html>
